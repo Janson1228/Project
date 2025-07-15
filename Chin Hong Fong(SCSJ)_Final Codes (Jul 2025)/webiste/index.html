@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DreamWeaver - Dream Logging App</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo-container">
+                <i class="fa fa-bed logo-icon"></i>
+                <h1>DreamWeaver</h1>
+            </div>
+            <button id="settings-toggle" class="header-button">
+                <i class="fas fa-cog"></i>
+            </button>
+        </header>
+
+        <nav class="sidebar" id="sidebar">
+            <ul>
+                <li class="active"><a href="#home"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="#journal"><i class="fas fa-book"></i> Dream Journal</a></li>
+                <li><a href="#analytics"><i class="fas fa-chart-line"></i> Analytics</a></li>
+            </ul>
+        </nav>
+
+        <main id="main-content">
+            <section id="home" class="content-section active">
+                <h2>Welcome to DreamWeaver</h2>
+                <p>Log and analyze your dreams to better understand your subconscious mind.</p>
+                
+                <div class="quick-actions">
+                    <button class="big-button" onclick="navigateTo('journal')">
+                        <i class="fas fa-plus"></i> Log Dream
+                    </button>
+                    <button class="big-button" onclick="navigateTo('analytics')">
+                        <i class="fas fa-chart-pie"></i> View Analytics
+                    </button>
+                </div>
+                
+                <div class="personas">
+                    <h3>Who Uses DreamWeaver?</h3>
+                    <div class="persona-cards">
+                        <div class="persona-card">
+                            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Alex">
+                            <h4>Alex</h4>
+                            <p>"As a psychology student, DreamWeaver helps me track dream patterns for my research."</p>
+                        </div>
+                        <div class="persona-card">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Jamie">
+                            <h4>Jamie</h4>
+                            <p>"I often forget my dreams. This app makes it easy to record them right when I wake up."</p>
+                        </div>
+                        <div class="persona-card">
+                            <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Sam">
+                            <h4>Sam</h4>
+                            <p>"The analytics help me understand how my sleep quality affects my dreams."</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="journal" class="content-section">
+                <h2>Dream Journal</h2>
+                <div class="dream-input">
+                    <textarea placeholder="Describe your dream here..." id="dream-text"></textarea>
+                    <div class="input-options">
+                        <button class="voice-btn" id="voice-btn">
+                            <i class="fas fa-microphone"></i> Voice Input
+                        </button>
+                        <div class="emotion-selector">
+                            <span>How did you feel?</span>
+                            <div class="emotion-icons">
+                                <i class="fas fa-smile" data-emotion="happy" title="Happy"></i>
+                                <i class="fas fa-sad-tear" data-emotion="sad" title="Sad"></i>
+                                <i class="fas fa-angry" data-emotion="angry" title="Angry"></i>
+                                <i class="fas fa-surprise" data-emotion="surprised" title="Surprised"></i>
+                                <i class="fas fa-flushed" data-emotion="anxious" title="Anxious"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="save-btn">Save Dream</button>
+                </div>
+                
+                <div class="sleep-info">
+                    <div class="sleep-card">
+                        <h4>Sleep Stages</h4>
+                        <div class="sleep-visual">
+                            <div class="sleep-bar rem"></div>
+                            <div class="sleep-bar deep"></div>
+                            <div class="sleep-bar light"></div>
+                            <div class="sleep-bar awake"></div>
+                        </div>
+                        <p>Last night: 2h REM, 1.5h Deep, 4h Light</p>
+                    </div>
+                    <div class="sleep-card">
+                        <h4>Sleep Quality</h4>
+                        <div class="quality-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                        <p>Rate your sleep quality (1-5)</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="analytics" class="content-section">
+                <h2>Analytics</h2>
+                <div class="analytics-cards">
+                    <div class="analytics-card">
+                        <h4>Heart Rate</h4>
+                        <div class="graph-placeholder" id="heart-rate-graph"></div>
+                        <p>Average: 68 bpm during sleep</p>
+                    </div>
+                    <div class="analytics-card">
+                        <h4>Breathing</h4>
+                        <div class="graph-placeholder" id="breathing-graph"></div>
+                        <p>Normal breathing pattern detected</p>
+                    </div>
+                    <div class="analytics-card">
+                        <h4>Movement</h4>
+                        <div class="graph-placeholder" id="movement-graph"></div>
+                        <p>12 position changes last night</p>
+                    </div>
+                </div>
+                
+                <div class="dream-timeline">
+                    <h4>Dream Timeline</h4>
+                    <div class="timeline-visual">
+                        <div class="timeline-bar" style="width: 80%; background-color: #4CAF50;"></div>
+                    </div>
+                    <p>Most dreams occur between 3-6 AM</p>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2023 DreamWeaver. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

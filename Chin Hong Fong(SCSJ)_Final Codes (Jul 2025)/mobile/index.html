@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DreamWeaver Mobile</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="phone-container">
+        <!-- Status Bar -->
+        <div class="status-bar">
+            <span id="current-time">9:41</span>
+            <div class="status-icons">
+                <i class="fas fa-signal"></i>
+                <i class="fas fa-wifi"></i>
+                <i class="fas fa-battery-three-quarters"></i>
+            </div>
+        </div>
+
+        <!-- App Header -->
+        <header>
+            <button id="menu-btn" class="icon-btn" aria-label="Menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="app-title">
+                <i class="fa fa-bed"></i>
+                <h1>DreamWeaver</h1>
+            </div>
+            <button id="theme-btn" class="icon-btn" aria-label="Toggle Theme">
+                <i class="fas fa-adjust"></i>
+            </button>
+        </header>
+
+        <!-- Sidebar Overlay -->
+        <div id="sidebar-overlay" class="sidebar-overlay"></div>
+
+        <!-- Sidebar Navigation -->
+        <nav id="sidebar">
+            <ul>
+                <li class="active"><a href="#" data-section="home"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="#" data-section="journal"><i class="fas fa-book"></i> Journal</a></li>
+                <li><a href="#" data-section="analytics"><i class="fas fa-chart-line"></i> Analytics</a></li>
+                <li><a href="#" data-section="settings"><i class="fas fa-cog"></i> Settings</a></li>
+            </ul>
+        </nav>
+
+        <!-- Main Content -->
+        <main>
+            <!-- Home Screen -->
+            <section id="home" class="screen active">
+                <div class="welcome-card">
+                    <h2>Dream Journal</h2>
+                    <p>Record and analyze your dreams</p>
+                </div>
+                
+                <div class="user-profile">
+                    <div class="user-selector">
+                        <select id="user-select" aria-label="Select user profile">
+                            <option value="alex">Alex</option>
+                            <option value="jamie">Jamie</option>
+                            <option value="sam">Sam</option>
+                        </select>
+                    </div>
+                    <div class="user-stats">
+                        <div class="user-stat">
+                            <i class="fas fa-heartbeat"></i>
+                            <span id="heart-rate">--</span> bpm
+                        </div>
+                        <div class="user-stat">
+                            <i class="fas fa-lungs"></i>
+                            <span id="breathing-rate">--</span> rpm
+                        </div>
+                        <div class="user-stat">
+                            <i class="fas fa-running"></i>
+                            <span id="movement">--</span>%
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="action-buttons">
+                    <button class="btn-primary" id="new-dream-btn">
+                        <i class="fas fa-plus"></i> New Entry
+                    </button>
+                    <button class="btn-secondary" id="view-stats-btn">
+                        <i class="fas fa-chart-pie"></i> View Stats
+                    </button>
+                </div>
+                
+                <div class="recent-dreams">
+                    <h3><i class="fas fa-history"></i> Recent Dreams</h3>
+                    <div id="dreams-list" class="dreams-list">
+                        <!-- Dreams will be added here dynamically -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Journal Screen -->
+            <section id="journal" class="screen">
+                <div class="journal-header">
+                    <h2><i class="fas fa-book"></i> New Dream</h2>
+                </div>
+                
+                <div class="dream-input">
+                    <textarea id="dream-text" placeholder="Describe your dream here..." aria-label="Dream description"></textarea>
+                    
+                    <div class="voice-input-container">
+                        <button id="voice-input-btn" class="btn-secondary">
+                            <i class="fas fa-microphone"></i> Start Recording
+                        </button>
+                    </div>
+                    
+                    <div class="mood-selector">
+                        <p>How did you feel?</p>
+                        <div class="mood-options">
+                            <button class="mood-btn" data-mood="happy" aria-label="Happy mood">
+                                <i class="fas fa-smile"></i> Happy
+                            </button>
+                            <button class="mood-btn" data-mood="sad" aria-label="Sad mood">
+                                <i class="fas fa-sad-tear"></i> Sad
+                            </button>
+                            <button class="mood-btn" data-mood="angry" aria-label="Angry mood">
+                                <i class="fas fa-angry"></i> Angry
+                            </button>
+                            <button class="mood-btn" data-mood="anxious" aria-label="Anxious mood">
+                                <i class="fas fa-flushed"></i> Anxious
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <button class="btn-primary" id="save-dream-btn">
+                        <i class="fas fa-save"></i> Save Dream
+                    </button>
+                </div>
+            </section>
+
+            <!-- Analytics Screen -->
+            <section id="analytics" class="screen">
+                <div class="stats-header">
+                    <h2><i class="fas fa-chart-line"></i> Your Dream Stats</h2>
+                </div>
+                
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-value" id="total-dreams">0</div>
+                        <div class="stat-label">Total Dreams</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="common-mood">-</div>
+                        <div class="stat-label">Common Mood</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="last-recorded">-</div>
+                        <div class="stat-label">Last Recorded</div>
+                    </div>
+                </div>
+                
+                <div class="sleep-metrics">
+                    <h3><i class="fas fa-bed"></i> Sleep Metrics</h3>
+                    <div class="metrics-grid">
+                        <div class="metric-card">
+                            <div class="metric-value" id="avg-heart-rate">--</div>
+                            <div class="metric-label">Avg Heart Rate</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value" id="avg-breathing">--</div>
+                            <div class="metric-label">Avg Breathing</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value" id="sleep-quality">--</div>
+                            <div class="metric-label">Sleep Quality</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="chart-container">
+                    <canvas id="mood-chart" aria-label="Mood chart"></canvas>
+                </div>
+            </section>
+
+            <!-- Settings Screen -->
+            <section id="settings" class="screen">
+                <div class="settings-header">
+                    <h2><i class="fas fa-cog"></i> Settings</h2>
+                </div>
+                
+                <div class="settings-options">
+                    <div class="setting-item">
+                        <span>Dark Mode</span>
+                        <label class="switch">
+                            <input type="checkbox" id="dark-mode-toggle" aria-label="Toggle dark mode">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    
+                    <div class="setting-item">
+                        <span>Voice Input</span>
+                        <label class="switch">
+                            <input type="checkbox" id="voice-input-toggle" aria-label="Toggle voice input">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    
+                    <div class="setting-item">
+                        <span>Notifications</span>
+                        <label class="switch">
+                            <input type="checkbox" id="notifications-toggle" checked aria-label="Toggle notifications">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
